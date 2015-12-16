@@ -41,6 +41,16 @@
       line-height: 140%;
       color: #333; 
   }
+  
+  table {
+   border: 1pt solid black;
+   border-collapse: collapse;
+   padding: 5px;
+  }
+  
+  th {
+   background-color: azure;
+  }
 
 
   div > img {

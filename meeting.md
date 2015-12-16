@@ -26,3 +26,11 @@ file will always affect the SHA.
 Let's include an image and have some fun.
 
 ![My first image enhancing the notes.](img/2015-11-18_094552.png)
+
+
+| ID  | Name |
+|----:|------|
+|23 | Sebastian |
+|11 | Ina|
+
+[My Table]
