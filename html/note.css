@@ -48,8 +48,13 @@
    padding: 5px;
   }
   
-  th {
+  thead {
    background-color: azure;
+  }
+  
+  th, td {
+   border: 1pt solid black;
+   padding: 10px;
   }
 
 

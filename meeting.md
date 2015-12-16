@@ -33,4 +33,4 @@ Let's include an image and have some fun.
 |23 | Sebastian |
 |11 | Ina|
 
-[My Table]
+: lists all known user
