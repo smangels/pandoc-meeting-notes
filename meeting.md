@@ -23,6 +23,6 @@ file will always affect the SHA.
 
 ## Have Fun Writing Meeting Notes
 
-Let's include an image.
+Let's include an image and have some fun.
 
 ![My first image enhancing the notes.](img/2015-11-18_094552.png)
