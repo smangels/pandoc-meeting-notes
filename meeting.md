@@ -22,3 +22,7 @@ For more information refer to the [following article](https://git-scm.com/book/b
 file will always affect the SHA.
 
 ## Have Fun Writing Meeting Notes
+
+Let's include an image.
+
+![My first image enhancing the notes.](img/2015-11-18_094552.png)
