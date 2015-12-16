@@ -17,17 +17,15 @@ endif
 all: html pdf Makefile
 
 %.html: %.md $(HTML_VOLVO_FILES)
-	$(shell test -d $(FOLDER_OUT) || mkdir -p $(FOLDER_OUT))
 	@echo " [   HTML ] $< ==> $@"
-	$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $(FOLDER_OUT)$@
+	$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
 
 html: $(HTML_TARGET)
 	@echo " [   DONE ] generating HTML"
 
 %.pdf: %.md
-	$(shell test -d $(FOLDER_OUT) || mkdir -p $(FOLDER_OUT))
 	@echo " [    PDF ] $< ==> $@"
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $(FOLDER_OUT)$@
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
 
 pdf: $(PDF_TARGET)
 	@echo " [   DONE ] generating PDF"
@@ -36,4 +34,5 @@ pdf: $(PDF_TARGET)
 clean:
 	rm -f $(HTML_TARGET)
 	rm -f .done
-	rm -rf $(FOLDER_OUT)
+	rm -f *.pdf
+	rm -f *.html
