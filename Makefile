@@ -6,7 +6,7 @@ PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/note.css -N -A html/note.footer.html
 OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
-OPT_PANDOC_PDF := -t epub
+OPT_PANDOC_EPUB := -t epub --epub-cover-image=img/cover.png
 FOLDER_OUT := out/
 
 EXEC_PANDOC := $(shell which pandoc)
@@ -25,8 +25,8 @@ all: html pdf epub Makefile
 html: $(HTML_TARGET)
 	@echo " [   DONE ] generating HTML"
 	
-epub: $(EPUB_TARGET)
-	@echo " [   DONE ] generating HTML"
+epub: $(EPUB_TARGET) img/cover.png
+	@echo " [   DONE ] generating EPUB"
 
 %.epub: %.md
 	@echo " [   EPUB ] $< ==> $@"
