@@ -44,6 +44,7 @@ pdf: $(PDF_TARGET)
 %.html: %.md
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
 	@echo " [   HTML ] $< ==> $@"
+	firefox $@
 
 %.epub: %.md
 	@echo " [   EPUB ] $< ==> $@"
