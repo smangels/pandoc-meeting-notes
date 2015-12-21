@@ -5,6 +5,9 @@ HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
+
+FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
+
 OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/note.css -N -A html/note.footer.html
 OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_EPUB := -t epub --epub-cover-image=img/cover.png
@@ -19,21 +22,27 @@ endif
 
 all: html pdf epub Makefile
 
-deploy: pdf epub html-deployable
+deploy: meeting.deploy.tar.gz
+
+meeting.deploy.tar.gz: pdf html-deployable epub
+	@tar -czf $@ $(FILES)
+	@echo " [ TAR.GZ ] ==> $@"
 	
 html-deployable: $(HTML_SELF_CONTAINED)
+
+html: $(HTML_TARGET)
 	
-%.self_contained.html: %.md	
+epub: $(EPUB_TARGET)
+
+pdf: $(PDF_TARGET)
+	
+%.self_contained.html: %.md
 	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $< -o $@
-	@echo " [   HTML ]: deployable"
+	@echo " [   HTML ] $< ==> $@"
 
 %.html: %.md $(HTML_VOLVO_FILES)
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
 	@echo " [   HTML ] $< ==> $@"
-
-html: $(HTML_TARGET)
-	
-epub: $(EPUB_TARGET) img/cover.png
 
 %.epub: %.md
 	@echo " [   EPUB ] $< ==> $@"
@@ -43,8 +52,6 @@ epub: $(EPUB_TARGET) img/cover.png
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
 	@echo " [    PDF ] $< ==> $@"
 
-pdf: $(PDF_TARGET)
-
 .PHONY: clean
 clean:
 	rm -f $(HTML_TARGET)
@@ -52,4 +59,5 @@ clean:
 	rm -f *.pdf
 	rm -f *.html
 	rm -f *.epub
+	rm -f *.tar.gz
 	
