@@ -9,7 +9,8 @@ toc-title: Table Of Content
 # Introduction
 
 ## Some Code Examples
-Before starting work with GIT everyone should start with setting users name and email adress.
+Before starting work with GIT everyone should start with setting users name and email address
+(refer to [section](#some-code-examples).
 
 ~~~~{.bash}
 git config --global user.email "your@mail.com"
@@ -35,4 +36,13 @@ Let's include an image and have some fun.
 
 : lists all known user
 
-## Just another subsection
+## A chapter with a following code box, fix the margin
+
+```python
+def main():
+   pass
+
+if __name__ == "__main__":
+   sys.exit(main())
+```
+   
