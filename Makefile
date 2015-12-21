@@ -18,6 +18,13 @@ endif
 
 all: html pdf epub Makefile
 
+deploy: pdf epub html-deployable
+	@echo " [ DEPLOY ]"
+	
+html-deployable:
+	@echo " [   HTML ]: deployable"
+	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $< -o $@
+
 %.html: %.md $(HTML_VOLVO_FILES)
 	@echo " [   HTML ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
