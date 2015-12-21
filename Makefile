@@ -2,6 +2,7 @@
 FILES_SOURCE_MD := $(shell ls -1 *.md)
 HTML_VOLVO_FILES = html/note.footer.html html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
+HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/note.css -N -A html/note.footer.html
@@ -19,32 +20,30 @@ endif
 all: html pdf epub Makefile
 
 deploy: pdf epub html-deployable
-	@echo " [ DEPLOY ]"
 	
-html-deployable:
-	@echo " [   HTML ]: deployable"
+html-deployable: $(HTML_SELF_CONTAINED)
+	
+%.self_contained.html: %.md	
 	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $< -o $@
+	@echo " [   HTML ]: deployable"
 
 %.html: %.md $(HTML_VOLVO_FILES)
-	@echo " [   HTML ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
+	@echo " [   HTML ] $< ==> $@"
 
 html: $(HTML_TARGET)
-	@echo " [   DONE ] generating HTML"
 	
 epub: $(EPUB_TARGET) img/cover.png
-	@echo " [   DONE ] generating EPUB"
 
 %.epub: %.md
 	@echo " [   EPUB ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $< -o $@   
 
 %.pdf: %.md
-	@echo " [    PDF ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
+	@echo " [    PDF ] $< ==> $@"
 
 pdf: $(PDF_TARGET)
-	@echo " [   DONE ] generating PDF"
 
 .PHONY: clean
 clean:
