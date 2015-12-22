@@ -2,11 +2,24 @@
 
 <style type="text/css">
 
+/*
+    Volvos colors are
+    we've used Adobe color tool: https://color.adobe.com/create/color-wheel/
+    
+    #184A7F - used for h1
+    #7DBBFF -  
+    #3193FF - 
+    #3F5E7F - frames around code and figures
+    #2776CC - used for h2
+
+*/
+
   blockquote {
-    background: #d6e1fd;
-    border-left: 10px solid #FF1606;
+    background: #7DBBFF;
+    border-left: 10px solid #8C1528;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
+    color: black;
     quotes: "\201C""\201D""\2018""\2019";
   }
 
@@ -18,13 +31,13 @@
   p > code {
     font-family: monospace;
     font-size: 120%;
-    background-color: azure;
+    color: #2776CC;
   }
 
 
    li > code {
     font-family: monospace;
-    background-color: azure;
+    color: #2776CC;
     line-height: 2em;
     font-size: 120%;
   }
@@ -43,13 +56,17 @@
   }
   
   table {
-   border: 1pt solid black;
-   border-collapse: collapse;
-   padding: 5px;
+    border: 1pt solid black;
+    border-collapse: collapse;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 5px;
+    min-width: 50%;
+    max-width: 90%;
   }
   
   thead {
-   background-color: azure;
+   background-color: #5F9BFF;
   }
   
   th, td {
@@ -72,6 +89,20 @@
     font-style: italic;
   }
 
+    table > caption {
+      margin-top: 5px;
+      text-align: left;
+      line-height: 100%;
+      caption-side: bottom;
+      color: #5F9BFF;
+      font-style: italic;
+    }
+
+    table > caption:before {
+      content: 'Table: ';
+      color: black;
+    }
+
   /*
     limit the width of images to 80%
   */
@@ -90,14 +121,20 @@
 
 
   /*
-    images have a caption,
-    color them and make
-    them italic
+    images have a caption, color them and make them italic
   */
   .caption {
-    margin-top: -2px;
     font-style: italic;
+    margin-bottom: 5px;
+    line-height: 100%;
     color: #5F9BFF;
+    caption-side: bottom;
+    margin-top: 5px;
+  }
+
+  .caption:before {
+    content: 'Figure: ';
+    color: black;
   }
 
   .title {

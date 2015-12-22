@@ -26,15 +26,26 @@ file will always affect the SHA.
 
 Let's include an image and have some fun.
 
-![My first image enhancing the notes.](img/2015-11-18_094552.png)
+![My first image enhancing the notes.](img/2015-11-18_094552.png "AltText")
 
 
-| ID  | Name |
-|----:|------|
-|23 | Sebastian |
-|11 | Ina|
+| IDABD  | Name | Surname | Address |
+|----:|------|----- |----- |
+|23 | Sebastian | Krueger Mangelsen | Eklanda Skog 27, 43149 Mölndal
+|11 | Ina| Bloch | Inas Gränd 13, 43157 Göteborg
+|11 | Ina| Geichberge | Inas Gränd 13, 43157 Göteborg
+|11 | Ina| Läuthäuser Schnarrenberger | Inas Gränd 13, 43157 Göteborg
 
 : lists all known user
+
+| Name | Type | ID |
+|--:|--|--|
+| ABC | None | 23
+| ABC | None | 23
+| ABC | None | 23
+
+: A shorter table in order to test how it scales.
+
 
 ## A chapter with a following code box, fix the margin
 
@@ -45,4 +56,10 @@ def main():
 if __name__ == "__main__":
    sys.exit(main())
 ```
+
+## Write Inline Code
+Sometimes it is required to write some inline code. It could be used to highlight
+names as well. In Linux, one could make use of `nice` in order to change the 
+scheduler priority for a certain binary.
+
    
