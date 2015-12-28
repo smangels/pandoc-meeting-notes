@@ -5,7 +5,7 @@ HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/note.css -N -A html/note.footer.html
-OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_PDF := --listings --template template.tex -t latex -V fontsize=12pt -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_EPUB := -t epub --epub-cover-image=img/cover.png
 FOLDER_OUT := out/
 
