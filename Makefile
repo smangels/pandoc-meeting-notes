@@ -2,10 +2,15 @@
 FILES_SOURCE_MD := $(shell ls -1 *.md)
 HTML_VOLVO_FILES = html/note.footer.html html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
+HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
-OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/note.css -N -A html/note.footer.html
-OPT_PANDOC_PDF := --listings --template template.tex -t latex -V fontsize=12pt -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+
+THEME := default
+FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
+
+OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME).css -N -A html/note.footer.html
+OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt --template template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_EPUB := -t epub --epub-cover-image=img/cover.png
 FOLDER_OUT := out/
 
@@ -18,26 +23,35 @@ endif
 
 all: html pdf epub Makefile
 
-%.html: %.md $(HTML_VOLVO_FILES)
-	@echo " [   HTML ] $< ==> $@"
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
+deploy: meeting.deploy.tar.gz
+
+meeting.deploy.tar.gz: pdf html-deployable epub
+	@tar -czf $@ $(FILES)
+	@echo " [ TAR.GZ ] ==> $@"
+	
+html-deployable: $(HTML_SELF_CONTAINED)
 
 html: $(HTML_TARGET)
-	@echo " [   DONE ] generating HTML"
 	
-epub: $(EPUB_TARGET) img/cover.png
-	@echo " [   DONE ] generating EPUB"
+epub: $(EPUB_TARGET)
+
+pdf: $(PDF_TARGET)
+	
+%.self_contained.html: %.md
+	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $< -o $@
+	@echo " [   HTML ] $< ==> $@"
+
+%.html: %.md
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
+	@echo " [   HTML ] $< ==> $@"
 
 %.epub: %.md
 	@echo " [   EPUB ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $< -o $@   
 
 %.pdf: %.md
-	@echo " [    PDF ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
-
-pdf: $(PDF_TARGET)
-	@echo " [   DONE ] generating PDF"
+	@echo " [    PDF ] $< ==> $@"
 
 .PHONY: clean
 clean:
@@ -46,4 +60,5 @@ clean:
 	rm -f *.pdf
 	rm -f *.html
 	rm -f *.epub
+	rm -f *.tar.gz
 	
