@@ -10,7 +10,7 @@ THEME := default
 FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
 
 OPT_PANDOC_HTML := --listings -t html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt --template template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt --template pdf/template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_EPUB := -t epub --epub-cover-image=img/cover.png
 FOLDER_OUT := out/
 
