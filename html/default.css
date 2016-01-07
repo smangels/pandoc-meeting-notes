@@ -78,6 +78,7 @@
   div > img {
     padding: 20px;
     border:2px solid #5F9BFF;
+    border-radius: 10px;
     width: 80%;
   }
 
@@ -116,6 +117,7 @@
     padding-left: 5px;
     margin-top: 2em;
     border: 2px solid #5F9BFF;
+    border-radius: 10px;
     margin-left: 10px;
   }
 
