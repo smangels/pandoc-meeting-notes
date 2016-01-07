@@ -6,7 +6,11 @@ HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 
-THEME_NAME := default
+ifneq ($(THEME),)
+	THEME_NAME := $(THEME)
+else
+	THEME_NAME := default
+endif
 FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
 
 OPT_PANDOC_HTML := --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html

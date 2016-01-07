@@ -1,0 +1,224 @@
+
+
+<style type="text/css">
+
+/*
+    Volvos colors are
+    we've used Adobe color tool: https://color.adobe.com/create/color-wheel/
+    
+    #184A7F - used for h1
+    #7DBBFF -  
+    #3193FF - 
+    #3F5E7F - frames around code and figures
+    #2776CC - used for h2
+
+*/
+
+  blockquote {
+    background: #7DBBFF;
+    border-left: 10px solid #8C1528;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    color: black;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+
+  blockquote p {
+    display: inline;
+  }
+  
+  /* code that is written inline */
+  p > code {
+    font-family: monospace;
+    font-size: 120%;
+    color: #2776CC;
+  }
+
+
+   li > code {
+    font-family: monospace;
+    color: #2776CC;
+    line-height: 2em;
+    font-size: 120%;
+  }
+  body {
+      margin: auto;
+      padding-right: 2em;
+      padding-left: 1em;
+      max-width: 60em; 
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      color: black;
+      font-family: Verdana, sans-serif;
+      font-size: 100%;
+      line-height: 140%;
+      color: #333; 
+  }
+  
+  table {
+    border: 1pt solid black;
+    border-collapse: collapse;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 5px;
+    min-width: 50%;
+    max-width: 90%;
+  }
+  
+  thead {
+   background-color: #5F9BFF;
+  }
+  
+  th, td {
+   border: 1pt solid black;
+   padding: 0.4em;
+  }
+
+
+  div > img {
+    padding: 20px;
+    border:2px solid #5F9BFF;
+    border-radius: 10px;
+    width: 80%;
+  }
+
+
+  /* give the header some space */
+  #header {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-style: italic;
+  }
+
+    table > caption {
+      margin-top: 5px;
+      text-align: left;
+      line-height: 100%;
+      caption-side: bottom;
+      color: #5F9BFF;
+      font-style: italic;
+    }
+
+    table > caption:before {
+      content: 'Table: ';
+      color: black;
+    }
+
+  /*
+    limit the width of images to 80%
+  */
+  div > pre {
+    font-size: 1.1em;
+    width: 80%;
+  }
+
+  div.sourceCode {
+    width: 80%;
+    padding-left: 5px;
+    border: 2px solid #5F9BFF;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
+  /* 
+    we do not need a border around meta data tables
+    the table is used to easily format key and data
+  */
+  .meta-table {
+    border-style: none;
+  }
+
+  .meta-table-row {
+    border-style: none;
+  }
+
+  .meta-table-column {
+    border-style: none;
+  }
+
+
+  /*
+    images have a caption, color them and make them italic
+  */
+  .caption {
+    font-style: italic;
+    margin-bottom: 5px;
+    line-height: 100%;
+    color: #5F9BFF;
+    caption-side: bottom;
+    margin-top: 5px;
+  }
+
+  .caption:before {
+    content: 'Figure: ';
+    color: black;
+  }
+
+  .title {
+    margin-top: 0em;
+    font-style: italic;
+  }
+
+  .subtitle {
+    margin-top: 0em;
+  }
+
+  h1 + .date {
+    margin-top: 0em;
+    margin-bottom: 0em;
+  }
+
+  h2 + .author {
+    margin-top: 0em;
+    font-size: 1em;
+  }
+
+  #TOC:before {
+    content: 'Table of content:';
+    font-size: 2em;
+    color: #5F9BFF;
+  }
+
+  #TOC {
+    margin-top: 4em;
+    margin-bottom: 4em;
+  }
+
+  #footer {
+    margin-top: 4em;
+  }
+
+
+  /*
+    we would like to get a vertical line between each "chapter"
+  */
+  h1 .header-section-number:before {
+    content: ' ';
+    display: block;
+    border: 1px solid #001060;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    margin-top: 4em;
+    color: #001060;
+  }
+
+  h2 {
+    color: #0642DE;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  h3 {
+    color: #0450C7;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  h4 {
+    color: #0683D4;
+    margin-bottom: -10px;
+  }
+
+</style>
