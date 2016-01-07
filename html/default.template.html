@@ -39,38 +39,16 @@ $include-before$
 $endfor$
 $if(title)$
 <div id="$idprefix$header">
-  <table class="meta-table">
-    <tr class="meta-table-row">
-      <td class="meta-table-key">Title</td>
-      <td class="meta-table-value">$title$</td>
-    </tr>
-  $if(subtitle)$
-    <tr class="meta-table-row">
-      <td class="meta-table-column">Subtitle</td>
-      <td class="meta-table-column">$subtitle$</td>
-    </tr>
-  $endif$
-  $if(author)$
-    $for(author)$
-    <tr class="meta-table-row">
-      <td>Author</td>
-      <td>$author$</td>
-    </tr>
-    $endfor$
-  $endif$
-  $if(date)$
-    <tr class="meta-table-row">
-      <td class="meta-table-column">Date</td>
-      <td class="meta-table-column">$date$</td>
-    </tr>
-  $endif$
-  $if(version)$
-    <tr class="meta-table-row">
-      <td>Version</td>
-      <td class="version">$version$</td>
-    </tr>
-  $endif$
-  </table>
+<h2 class="title">$title$</h2>
+$if(subtitle)$
+<h3 class="subtitle">$subtitle$</h3>
+$endif$
+$for(author)$
+<h3 class="author">$author$</h3>
+$endfor$
+$if(date)$
+<h3 class="meta-table-column">$date$</h3>
+$endif$
 </div>
 $endif$
 $if(toc)$
