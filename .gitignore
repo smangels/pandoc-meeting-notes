@@ -1,5 +1,8 @@
 out/
 *.pdf
 *.html
+!html/*
+!pdf/*
+!img/*
 *.epub
 *.tar.gz
