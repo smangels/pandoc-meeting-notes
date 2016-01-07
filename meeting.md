@@ -47,7 +47,7 @@ Let's include an image and have some fun.
 : A shorter table in order to test how it scales.
 
 
-## A chapter with a following code box, fix the margin
+## Codebox follows a new section, watch for marginss
 
 ```python
 def main():
