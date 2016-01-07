@@ -39,37 +39,37 @@ $include-before$
 $endfor$
 $if(title)$
 <div id="$idprefix$header">
-  <table>
-      <tr>
-        <td>Title</td>
-        <td>$title$</td>
-      </tr>
-    $if(subtitle)$
-      <tr>
-        <td>Subtitle</td>
-        <td>$subtitle$</td>
-      </tr>
-    $endif$
-    $if(author)$
-      $for(author)$
-      <tr>
-        <td>Author</td>
-        <td>$author$</td>
-      </tr>
-      $endfor$
-    $endif$
-    $if(date)$
-      <tr>
-        <td>Date</td>
-        <td class="date">$date$</td>
-      </tr>
-    $endif$
-    $if(version)$
-      <tr>
-        <td>Version</td>
-        <td class="version">$version$</td>
-      </tr>
-    $endif$
+  <table class="meta-table">
+    <tr class="meta-table-row">
+      <td class="meta-table-key">Title</td>
+      <td class="meta-table-value">$title$</td>
+    </tr>
+  $if(subtitle)$
+    <tr class="meta-table-row">
+      <td class="meta-table-column">Subtitle</td>
+      <td class="meta-table-column">$subtitle$</td>
+    </tr>
+  $endif$
+  $if(author)$
+    $for(author)$
+    <tr class="meta-table-row">
+      <td>Author</td>
+      <td>$author$</td>
+    </tr>
+    $endfor$
+  $endif$
+  $if(date)$
+    <tr class="meta-table-row">
+      <td class="meta-table-column">Date</td>
+      <td class="meta-table-column">$date$</td>
+    </tr>
+  $endif$
+  $if(version)$
+    <tr class="meta-table-row">
+      <td>Version</td>
+      <td class="version">$version$</td>
+    </tr>
+  $endif$
   </table>
 </div>
 $endif$

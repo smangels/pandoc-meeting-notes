@@ -71,7 +71,7 @@
   
   th, td {
    border: 1pt solid black;
-   padding: 10px;
+   padding: 0.4em;
   }
 
 
@@ -115,10 +115,25 @@
   div.sourceCode {
     width: 80%;
     padding-left: 5px;
-    margin-top: 2em;
     border: 2px solid #5F9BFF;
     border-radius: 10px;
     margin-left: 10px;
+  }
+
+  /* 
+    we do not need a border around meta data tables
+    the table is used to easily format key and data
+  */
+  .meta-table {
+    border-style: none;
+  }
+
+  .meta-table-row {
+    border-style: none;
+  }
+
+  .meta-table-column {
+    border-style: none;
   }
 
 
@@ -191,7 +206,8 @@
 
   h2 {
     color: #0642DE;
-    margin-bottom: -10px;
+    margin-top: 2em;
+    margin-bottom: 1em;
   }
 
   h3 {

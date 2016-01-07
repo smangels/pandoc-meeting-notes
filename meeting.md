@@ -3,6 +3,7 @@ title: Your Meeting Title
 author: Sebastian K. Mangelsen
 date: 2015-XX-XX
 toc-title: Table Of Content
+version: 1.0
 ...
 
 
@@ -47,7 +48,7 @@ Let's include an image and have some fun.
 : A shorter table in order to test how it scales.
 
 
-## Codebox follows a new section, watch for marginss
+## Codebox follows a new section, watch for margins
 
 ```python
 def main():
