@@ -51,12 +51,14 @@ $if(title)$
     </tr>
   $endif$
   $if(author)$
-    $for(author)$
-    <tr class="meta-table-row">
-      <td class="meta-key">Author</td>
-      <td class="meta-value">$author$</td>
-    </tr>
+  <tr class="meta-table-row">
+      <td style="vertical-align: top" class="meta-key">Author</td>
+      <td class="meta-value">
+    $for(author)$  
+      $author$<br>
     $endfor$
+    </td>
+    </tr>
   $endif$
   $if(date)$
     <tr class="meta-table-row">
