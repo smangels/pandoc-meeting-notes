@@ -1,8 +1,9 @@
 ---
-title: Readme for Pandoc Meeting notes project
+title: Project Readme
+subtitle: Pandoc Meeting Notes Project
 author: 
 - Sebastian K. Mangelsen
-- Stefan
+- Max Musterman
 date: 2015-12-20
 version: 1.0
 ...
