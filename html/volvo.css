@@ -125,14 +125,20 @@
     the table is used to easily format key and data
   */
   .meta-table {
-    border-style: none;
+    border: 1px solid black;
   }
 
   .meta-table-row {
+    border: 1px solid black;
+  }
+
+  .meta-key {
+    vertical-align: top;
+    color: blue;
     border-style: none;
   }
 
-  .meta-table-column {
+  .meta-value {
     border-style: none;
   }
 
