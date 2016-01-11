@@ -4,8 +4,18 @@ subtitle: Pandoc Meeting Notes Project
 author: 
 - Sebastian K. Mangelsen
 - Max Musterman
+attendee:
+- Maria Hagman
+- Tobias Wilhelm
+absentee:
+- Alexander Grove
+- Kajsa Torring
+reviewer:
+- Cristina Gingsjö
 date: 2015-12-20
 version: 1.0
+started: 17:41
+stopped: 21:10
 ...
 
 # pandoc-meeting-notes

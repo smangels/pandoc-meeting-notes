@@ -60,6 +60,32 @@ $if(title)$
     </td>
     </tr>
   $endif$
+  $if(reviewer)$
+    <tr class="meta-table-row">
+      <td class="meta-key">Justerare:</td>
+      <td class="meta-value">$reviewer$</td>
+    </tr>
+  $endif$
+  $if(attendee)$
+  <tr class="meta-table-row">
+      <td class="meta-key">Närvarande:</td>
+      <td class="meta-value">
+    $for(attendee)$  
+      $attendee$<br>
+    $endfor$
+    </td>
+    </tr>
+  $endif$
+  $if(absentee)$
+  <tr class="meta-table-row">
+      <td class="meta-key">Frånvarande:</td>
+      <td class="meta-value">
+    $for(absentee)$  
+      $absentee$<br>
+    $endfor$
+    </td>
+    </tr>
+  $endif$
   $if(date)$
     <tr class="meta-table-row">
       <td class="meta-key">Date:</td>
