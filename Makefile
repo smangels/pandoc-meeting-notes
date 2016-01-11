@@ -6,19 +6,28 @@ HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 
+#
+# will be evaluated once the command is applied
+#
+OPT_PANDOC_HTML = --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
+OPT_PANDOC_PDF = --listings -t latex -V fontsize=12pt --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
+
+FOLDER_OUT := out/
+FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
+EXEC_PANDOC := $(shell which pandoc)
+
+
 ifneq ($(THEME),)
 	THEME_NAME := $(THEME)
 else
 	THEME_NAME := default
 endif
-FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
 
-OPT_PANDOC_HTML := --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF := --listings -t latex -V fontsize=12pt --template pdf/template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
-OPT_PANDOC_EPUB := -t epub --epub-cover-image=img/cover.png
-FOLDER_OUT := out/
+ifeq ($(THEME),vetekornet)
+OPT_PANDOC_PDF += -B pdf/vetekornet.before.tex
+endif
 
-EXEC_PANDOC := $(shell which pandoc)
 
 
 ifeq ($(EXEC_PANDOC),)
@@ -54,7 +63,7 @@ pdf: $(PDF_TARGET)
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $< -o $@   
 
 %.pdf: %.md
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
+	$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
 	@echo " [    PDF ] $< ==> $@"
 
 .PHONY: clean

@@ -175,6 +175,10 @@ $if(author)$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
 \date{$date$}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
 $for(header-includes)$
 $header-includes$
 $endfor$
