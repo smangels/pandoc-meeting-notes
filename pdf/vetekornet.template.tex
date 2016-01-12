@@ -54,7 +54,7 @@ $if(geometry)$
 $endif$
 \usepackage{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-\hypersetup{unicode=true, colorlinks=true, citecolor=gray,
+\hypersetup{unicode=true,
 $if(title-meta)$
             pdftitle={$title-meta$},
 $endif$
@@ -69,8 +69,8 @@ $if(keywords)$
 $endif$
 $if(colorlinks)$
             colorlinks=true,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$Cyan$endif$,
+            citecolor=$if(citecolor)$$citecolor$$else$ForestGreen$endif$,
             urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
 $else$
             pdfborder={0 0 0},
@@ -168,13 +168,15 @@ $if(dir)$
 \fi
 $endif$
 
-
+% configure how sections are formated
+\usepackage{titlesec}
+\titlelabel{§\thetitle.\quad}
 
 $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
 $if(author)$
-\author{Sekreterare: $author$, \linebreak Justerare: $reviewer$}
+\author{Sekreterare: $author$, \\\newline Justerare: $reviewer$}
 $endif$
 \date{$date$}
 
@@ -211,7 +213,9 @@ $endif$
 
 \begin{document}
 $if(title)$
+\clearpage
 \maketitle
+\thispagestyle{empty}
 $endif$
 $if(abstract)$
 \begin{abstract}
@@ -219,27 +223,28 @@ $abstract$
 \end{abstract}
 $endif$
 
+
 $for(include-before)$
 $include-before$
 
 $endfor$
-$if(toc)$
-{
-$if(colorlinks)$
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-$endif$
-\setcounter{tocdepth}{$toc-depth$}
-\renewcommand{\contentsname}{$toc-title$}
-\tableofcontents
-}
-$endif$
-$if(lot)$
-\listoftables
-$endif$
-$if(lof)$
-\listoffigures
-$endif$
-\newpage
+%$if(toc)$
+%{
+%$if(colorlinks)$
+%\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+%$endif$
+%\setcounter{tocdepth}{$toc-depth$}
+%\renewcommand{\contentsname}{$toc-title$}
+%\tableofcontents
+%}
+%$endif$
+%$if(lot)$
+%\listoftables
+%$endif$
+%$if(lof)$
+%\listoffigures
+%$endif$
+%\clearpage
 $body$
 
 $if(natbib)$

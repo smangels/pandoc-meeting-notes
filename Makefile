@@ -10,7 +10,7 @@ EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 # will be evaluated once the command is applied
 #
 OPT_PANDOC_HTML = --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF = --listings -t latex -V fontsize=12pt --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_PDF = --listings -t latex --variable colorlinks --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
 
 FOLDER_OUT := out/
