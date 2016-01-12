@@ -11,6 +11,11 @@ $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
+
+% define a new column type for attendees and absentees
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -56,7 +61,7 @@ $endif$
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \hypersetup{unicode=true,
 $if(title-meta)$
-            pdftitle={$title-meta$},
+            pdftitle={$title-meta$ $date$},
 $endif$
 $if(author-meta)$
             pdfauthor={$author-meta$},
@@ -189,8 +194,7 @@ $header-includes$
 $endfor$
 
 % Header Definitions
-\lhead{FK Vetekornet, Styrelsemöte $date$}
-\rhead{}
+\lhead{Styrelsemöte $date$}
 
 % Footer Definitions
 \cfoot{FK Vetekornet}
@@ -212,6 +216,7 @@ $else$
 $endif$
 
 \begin{document}
+\begin{titlepage}
 $if(title)$
 \clearpage
 \maketitle
@@ -223,6 +228,25 @@ $abstract$
 \end{abstract}
 $endif$
 
+%
+% print a list of attendees, table is used to keep the cells aligned
+%
+$if(attendees)$
+\begin{tabular}{ L{3cm} L{8cm} }
+  \textbf{Närvarande:} & $for(attendees)$$attendees$ \newline $endfor$\\
+\end{tabular}
+$endif$
+
+%
+% print a list of absentees
+%
+$if(absentees)$
+\begin{tabular}{ L{3cm} L{8cm} }
+  \textbf{Frånvarande:} & $for(absentees)$$absentees$ \newline $endfor$\\
+\end{tabular}
+$endif$
+
+\end{titlepage}
 
 $for(include-before)$
 $include-before$
@@ -244,7 +268,7 @@ $endfor$
 %$if(lof)$
 %\listoffigures
 %$endif$
-%\clearpage
+\newpage
 $body$
 
 $if(natbib)$
