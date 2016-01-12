@@ -1,8 +1,9 @@
 ---
-title: Your Meeting Title
+title: Protokoll Styrelsemöte
 author: Sebastian K. Mangelsen
+reviewer: Cristina Gingsjö
 date: 2015-XX-XX
-toc-title: Table Of Content
+toc-title: Dagordningen
 version: 1.0
 ...
 

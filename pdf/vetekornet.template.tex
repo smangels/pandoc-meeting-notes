@@ -54,7 +54,7 @@ $if(geometry)$
 $endif$
 \usepackage{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-\hypersetup{unicode=true,
+\hypersetup{unicode=true, colorlinks=true, citecolor=gray,
 $if(title-meta)$
             pdftitle={$title-meta$},
 $endif$
@@ -168,20 +168,33 @@ $if(dir)$
 \fi
 $endif$
 
+
+
 $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
 $if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{Sekreterare: $author$, \linebreak Justerare: $reviewer$}
 $endif$
 \date{$date$}
 
+\usepackage{lastpage}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% Header Definitions
+\lhead{FK Vetekornet, Styrelsemöte $date$}
+\rhead{}
+
+% Footer Definitions
+\cfoot{FK Vetekornet}
+\lfoot{Version: $version$}
+\rfoot{\thepage/\pageref{LastPage}}
+
 
 $if(subparagraph)$
 $else$
@@ -216,6 +229,7 @@ $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
+\renewcommand{\contentsname}{$toc-title$}
 \tableofcontents
 }
 $endif$
@@ -225,6 +239,7 @@ $endif$
 $if(lof)$
 \listoffigures
 $endif$
+\newpage
 $body$
 
 $if(natbib)$

@@ -24,10 +24,6 @@ else
 	THEME_NAME := default
 endif
 
-ifeq ($(THEME),vetekornet)
-OPT_PANDOC_PDF += -B pdf/vetekornet.before.tex
-endif
-
 
 
 ifeq ($(EXEC_PANDOC),)
