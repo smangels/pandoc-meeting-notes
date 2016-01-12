@@ -2,18 +2,35 @@
 title: Protokoll Styrelsemöte
 subtitle: FK Vetekornet
 author: Sebastian K. Mangelsen
-reviewer: Cristina Gingsjö
+reviewer: Max Mustermann
 date: 2016-02-19
 keywords: Vetekornet styrelsemöte
-version: 1.1
+version: 1.0
+attendees:
+- Sebastian Mangelsen
+- Max Musterman
+- Fridrun Gundel
+absentees:
+- Dieter Dietrichsen
+- Helga Hanemann
 ...
 
 
 #   Mötets öppnande
+Mötet öppnades kl.17:42.
+
 #   Val av sekreterare
+Sebastian K. Mangelsen valdes till sekreterare.
+
 #   Val av justerare
+Max Mustermann valdes till justerare.
+
 #   Godkännande av dagordning
+Dagordningen godkändes.
+
 #   Personalfrågor
+(MH) berättar om personfrågor utan går in i allt för många detaljer.
+
 #   Familjerekrytering
 #   Ekonomi
 #   Bygga förråd
