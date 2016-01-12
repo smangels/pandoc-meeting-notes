@@ -3,19 +3,17 @@ title: Project Readme
 subtitle: Pandoc Meeting Notes Project
 author: 
 - Sebastian K. Mangelsen
-- Max Musterman
+- Max Mustermann
 attendee:
-- Maria Hagman
-- Tobias Wilhelm
+- Max Mustermann
+- Thomas Sjöfelt
 absentee:
-- Alexander Grove
-- Kajsa Torring
+- Petter Petersson
+- Styrbjörn
 reviewer:
-- Cristina Gingsjö
+- Max Musterman
 date: 2015-12-20
 version: 1.0
-started: 17:41
-stopped: 21:10
 ...
 
 # pandoc-meeting-notes
