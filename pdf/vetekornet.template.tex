@@ -15,6 +15,8 @@ $endif$
 % define a new column type for attendees and absentees
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcommand{\columnKeyWidth}{3.25cm}
+\newcommand{\columnValueWidth}{8cm}
 
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
@@ -195,6 +197,7 @@ $endfor$
 
 % Header Definitions
 \lhead{Styrelsemöte $date$}
+\rhead{\leftmark}
 
 % Footer Definitions
 \cfoot{FK Vetekornet}
@@ -228,11 +231,30 @@ $abstract$
 \end{abstract}
 $endif$
 
+
+\vspace{2em}
+%
+%	List the start and the stop time
+%
+$if(started)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{Mötet öppnades:} & $started$\\
+\end{tabular}
+
+$endif$
+
+$if(finished)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{Mötet avslutades:} & $finished$\\
+\end{tabular}
+ 
+$endif$
+
 %
 % print a list of attendees, table is used to keep the cells aligned
 %
 $if(attendees)$
-\begin{tabular}{ L{3cm} L{8cm} }
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
   \textbf{Närvarande:} & $for(attendees)$$attendees$ \newline $endfor$\\
 \end{tabular}
 $endif$
@@ -241,7 +263,7 @@ $endif$
 % print a list of absentees
 %
 $if(absentees)$
-\begin{tabular}{ L{3cm} L{8cm} }
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
   \textbf{Frånvarande:} & $for(absentees)$$absentees$ \newline $endfor$\\
 \end{tabular}
 $endif$
