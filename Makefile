@@ -5,13 +5,14 @@ HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
 EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
-PDF_MARGINS := -V geometry:"top=3cm, bottom=3cm, left=4cm, right=2cm"
+PDF_MARGINS := -V geometry:"top=2cm, bottom=2.5cm, left=3cm, right=2cm, footskip = 17mm"
+PDF_FONT_SIZE := -V fontsize=12pt
 
 #
 # will be evaluated once the command is applied
 #
 OPT_PANDOC_HTML = --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) --variable colorlinks --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
 
 FOLDER_OUT := out/

@@ -15,7 +15,7 @@ $endif$
 % define a new column type for attendees and absentees
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-\newcommand{\columnKeyWidth}{3.25cm}
+\newcommand{\columnKeyWidth}{4.0cm}
 \newcommand{\columnValueWidth}{8cm}
 
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -189,6 +189,7 @@ $endif$
 
 \usepackage{lastpage}
 \usepackage{fancyhdr}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 \pagestyle{fancy}
 
 $for(header-includes)$
