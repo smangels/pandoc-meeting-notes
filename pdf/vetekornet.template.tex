@@ -18,6 +18,17 @@ $endif$
 \newcommand{\columnKeyWidth}{4.0cm}
 \newcommand{\columnValueWidth}{8cm}
 
+%
+% Signature and Date field
+%
+\newcommand*{\SignatureAndDate}[2]{%
+\vspace{1in}
+\noindent\begin{tabular}{ll}
+\makebox[7cm]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\%
+#1 \textit{(#2)} & datum\\% adds space between the two sets of signatures
+\end{tabular}
+}
+
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -297,13 +308,9 @@ $body$
 %
 % create a signature field
 %
-\vspace{1in}
-\noindent\begin{tabular}{ll}
-\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\%
-User Representative & Date\\[8ex]% adds space between the two sets of signatures
-\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
-Program Manager & Date\\
-\end{tabular}
+\SignatureAndDate{$author$}{sekreterare}
+\newline
+\SignatureAndDate{$reviewer$}{justerare}
 
 $if(natbib)$
 $if(bibliography)$
