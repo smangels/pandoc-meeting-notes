@@ -15,6 +15,10 @@ attendees:
 absentees:
 - Dieter Dietrichsen
 - Helga Hanemann
+actions:
+- __Ansvarig__, beskriv det som ska göras
+decisions:
+- __Ansvarig__, beskriv beslutet
 ...
 
 
