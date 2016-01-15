@@ -255,6 +255,7 @@ $if(title)$
 \maketitle
 \thispagestyle{empty}
 $endif$
+
 $if(abstract)$
 \begin{abstract}
 $abstract$
@@ -333,7 +334,6 @@ $else$
 \end{tabular}
 $endif$
 
-\end{titlepage}
 
 $for(include-before)$
 $include-before$
@@ -355,7 +355,9 @@ $endfor$
 %$if(lof)$
 %\listoffigures
 %$endif$
-\newpage
+\pagebreak
+
+\end{titlepage}
 
 
 %
@@ -367,9 +369,10 @@ $body$
 %
 % create a signature field (name + role)
 %
+\begin{minipage}{\textwidth}
 \SignatureAndDate{$author$}{sekreterare}
 \SignatureAndDate{$reviewer$}{justerare}
-
+\end{minipage}
 
 $if(natbib)$
 $if(bibliography)$
