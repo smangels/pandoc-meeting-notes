@@ -291,6 +291,34 @@ $if(absentees)$
 \end{tabular}
 $endif$
 
+
+%
+% print a list of actions
+%
+$if(actions)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{Att göra:} & $for(actions)$$actions$ \newline $endfor$\\
+\end{tabular}
+$else$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{Att göra:} & Ingenting\\
+\end{tabular}
+$endif$
+
+
+%
+% print a list of decisions
+%
+$if(decisions)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{Beslut:} & $for(decisions)$$decisions$ \newline $endfor$\\
+\end{tabular}
+$else$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{Beslut:} & Inget nytt beslut\\
+\end{tabular}
+$endif$
+
 \end{titlepage}
 
 $for(include-before)$
