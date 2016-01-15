@@ -18,6 +18,28 @@ $endif$
 \newcommand{\columnKeyWidth}{4.0cm}
 \newcommand{\columnValueWidth}{8cm}
 
+%
+% force to place some empty lines
+% note the empty line below \mbox
+%
+\newcommand{\placeEmptyLines}[1]{%
+  \mbox{}%
+
+  \vspace{#1\baselineskip}%
+}
+
+%
+% Define a Signature and Date field
+%
+\newcommand{\SignatureAndDate}[2]{%
+  \placeEmptyLines{4}
+  \begin{tabular}{ll}%
+    \makebox[7cm]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\%
+    #1\textit{(#2)}&datum\\%
+  \end{tabular}%
+  \newline
+}
+
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -292,7 +314,20 @@ $endfor$
 %\listoffigures
 %$endif$
 \newpage
+
+
+%
+% Main document content
+%
 $body$
+
+
+%
+% create a signature field (name + role)
+%
+\SignatureAndDate{$author$}{sekreterare}
+\SignatureAndDate{$reviewer$}{justerare}
+
 
 $if(natbib)$
 $if(bibliography)$
