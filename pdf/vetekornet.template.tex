@@ -19,14 +19,25 @@ $endif$
 \newcommand{\columnValueWidth}{8cm}
 
 %
-% Signature and Date field
+% force to place some empty lines
+% note the empty line below \mbox
 %
-\newcommand*{\SignatureAndDate}[2]{%
-\vspace{1in}
-\noindent\begin{tabular}{ll}
-\makebox[7cm]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\%
-#1 \textit{(#2)} & datum\\% adds space between the two sets of signatures
-\end{tabular}
+\newcommand{\placeEmptyLines}[1]{%
+  \mbox{}%
+
+  \vspace{#1\baselineskip}%
+}
+
+%
+% Define a Signature and Date field
+%
+\newcommand{\SignatureAndDate}[2]{%
+  \placeEmptyLines{4}
+  \begin{tabular}{ll}%
+    \makebox[7cm]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\%
+    #1\textit{(#2)}&datum\\%
+  \end{tabular}%
+  \newline
 }
 
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -303,14 +314,20 @@ $endfor$
 %\listoffigures
 %$endif$
 \newpage
-$body$
+
 
 %
-% create a signature field
+% Main document content
+%
+$body$
+
+
+%
+% create a signature field (name + role)
 %
 \SignatureAndDate{$author$}{sekreterare}
-\newline
 \SignatureAndDate{$reviewer$}{justerare}
+
 
 $if(natbib)$
 $if(bibliography)$
