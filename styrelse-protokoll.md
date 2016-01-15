@@ -4,6 +4,7 @@ subtitle: FK Vetekornet
 author: Sebastian K. Mangelsen
 reviewer: Max Mustermann
 date: 2016-02-19
+place: FK Vetekornet, Toltorpsgatan 53, Mölndal
 keywords: Vetekornet styrelsemöte
 version: 1.0
 started: 17:42
