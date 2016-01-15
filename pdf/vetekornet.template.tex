@@ -199,8 +199,9 @@ $endif$
 
 % configure how sections are formated
 \usepackage{titlesec}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \titlelabel{§\thetitle.\quad}
-\titleformat*{\section}{\large\bfseries}
+\titleformat*{\section}{\color{NavyBlue}\large\bfseries}
 %\titleformat*{\subsection}{\Large\bfseries}
 %\titleformat*{\subsubsection}{\large\bfseries}
 %\titleformat*{\paragraph}{\large\bfseries}
@@ -267,14 +268,14 @@ $endif$
 %
 $if(started)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Mötet öppnades:} & $started$\\
+  \textbf{\color{NavyBlue}Mötet öppnades:} & $started$\\
 \end{tabular}
 
 $endif$
 
 $if(finished)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Mötet avslutades:} & $finished$\\
+  \textbf{\color{NavyBlue}Mötet avslutades:} & $finished$\\
 \end{tabular}
  
 $endif$
@@ -284,7 +285,7 @@ $endif$
 %
 $if(attendees)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Närvarande:} & $for(attendees)$$attendees$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Närvarande:} & $for(attendees)$$attendees$ \newline $endfor$\\
 \end{tabular}
 $endif$
 
@@ -293,7 +294,7 @@ $endif$
 %
 $if(absentees)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Frånvarande:} & $for(absentees)$$absentees$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Frånvarande:} & $for(absentees)$$absentees$ \newline $endfor$\\
 \end{tabular}
 $endif$
 
@@ -303,11 +304,11 @@ $endif$
 %
 $if(actions)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Att göra:} & $for(actions)$$actions$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Att göra:} & $for(actions)$$actions$ \newline $endfor$\\
 \end{tabular}
 $else$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Att göra:} & Ingenting\\
+  \textbf{\color{NavyBlue}Att göra:} & Ingenting\\
 \end{tabular}
 $endif$
 
@@ -317,11 +318,11 @@ $endif$
 %
 $if(decisions)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Beslut:} & $for(decisions)$$decisions$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Beslut:} & $for(decisions)$$decisions$ \newline $endfor$\\
 \end{tabular}
 $else$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{Beslut:} & Inget nytt beslut\\
+  \textbf{\color{NavyBlue}Beslut:} & Inget nytt beslut\\
 \end{tabular}
 $endif$
 
