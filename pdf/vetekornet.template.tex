@@ -200,6 +200,12 @@ $endif$
 % configure how sections are formated
 \usepackage{titlesec}
 \titlelabel{§\thetitle.\quad}
+\titleformat*{\section}{\large\bfseries}
+%\titleformat*{\subsection}{\Large\bfseries}
+%\titleformat*{\subsubsection}{\large\bfseries}
+%\titleformat*{\paragraph}{\large\bfseries}
+%\titleformat*{\subparagraph}{\large\bfseries}
+
 
 $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
