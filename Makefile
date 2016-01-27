@@ -1,5 +1,6 @@
 
 FILES_SOURCE_MD := $(shell ls -1 *.md)
+FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
 HTML_VOLVO_FILES = html/note.footer.html html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
@@ -13,6 +14,7 @@ PDF_FONT_SIZE := -V fontsize=12pt
 #
 OPT_PANDOC_HTML = --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
 OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template pdf/book.template.latex -s -S --toc --toc-depth 3 -N --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
 
 FOLDER_OUT := out/
@@ -46,7 +48,13 @@ html: $(HTML_TARGET)
 epub: $(EPUB_TARGET)
 
 pdf: $(PDF_TARGET)
-	
+
+book: Makefile book.pdf
+
+book.pdf: $(FILES_BOOK_MD)
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_BOOK) $(filter %.md,$^) -o $@
+	@echo " [   BOOK ] $< ==> $@"
+
 %.self_contained.html: %.md
 	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $< -o $@
 	@echo " [   HTML ] $< ==> $@"

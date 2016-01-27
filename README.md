@@ -62,3 +62,18 @@ The following command generates an PDF document for each _markdown_ document fou
 ~~~~{.bash}
 make pdf
 ~~~~
+
+### Generate a book
+The tools folder contains a _BASH_ script that generates a number of numbered template files.
+
+~~~~{.bash}
+tools/generate_chapters.sh -n 10
+~~~~
+
+Once the files are in place one could run the following command in order to produce a PDF document containing the concatenated content of all _markdown_ files whos name starts with `book_*.md`.
+
+~~~~{.bash}
+make book
+~~~~
+
+Feel free to add additional _markdown_ files following the same naming scheme (i.e. book_chapter_11.md).
