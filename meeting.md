@@ -1,10 +1,7 @@
 ---
-title: Protokoll Styrelsemöte
+title: Meeting Notes
 author: Sebastian K. Mangelsen
-reviewer: Cristina Gingsjö
 date: 2015-XX-XX
-toc-title: Dagordningen
-version: 1.0
 ...
 
 
