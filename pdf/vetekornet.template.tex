@@ -15,7 +15,7 @@ $endif$
 % define a new column type for attendees and absentees
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-\newcommand{\columnKeyWidth}{4.0cm}
+\newcommand{\columnKeyWidth}{4cm}
 \newcommand{\columnValueWidth}{8cm}
 
 %
@@ -279,11 +279,24 @@ $if(finished)$
   \textbf{\color{NavyBlue}Mötet avslutades:} & $finished$\\
 \end{tabular}
 
+$if(organisation)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{\color{NavyBlue}Bolag:} & $organisation$\\
+\end{tabular}
+$endif$
+
 $if(place)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }%
   \textbf{\color{NavyBlue}Plats:} & $place$\\%
 \end{tabular}%
 $endif$
+
+$if(orgNr)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{\color{NavyBlue}Organisationsnr:} & $orgNr$\\
+\end{tabular}
+$endif$
+
 
  
 $endif$
