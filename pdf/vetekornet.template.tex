@@ -271,7 +271,6 @@ $if(started)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
   \textbf{\color{NavyBlue}Mötet öppnades:} & $started$\\
 \end{tabular}
-
 $endif$
 
 $if(finished)$
@@ -283,6 +282,12 @@ $if(place)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }%
   \textbf{\color{NavyBlue}Plats:} & $place$\\%
 \end{tabular}%
+$endif$
+
+$if(orgNr)$
+\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{\color{NavyBlue}Organisationsnummer:} & $orgNr$\\
+\end{tabular}
 $endif$
 
  
