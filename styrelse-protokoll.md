@@ -3,19 +3,22 @@ title: Protokoll Styrelsemöte
 subtitle: FK Vetekornet
 author: Sebastian K. Mangelsen
 reviewer: Max Mustermann
-date: 2016-02-19
-place: FK Vetekornet, Toltorpsgatan 53, Mölndal
-keywords: Vetekornet styrelsemöte
+date: 2016-02-02
+place: Toltorpsgatan 53, Mölndal
+organisation: Föräldrakooperativet Vetekornet
+orgNr: 769601-5481
+keywords: Vetekornet styrelsemöte protokoll 2016
 version: 1.0
-started: 17:42
+started: 17:30
 finished: 21:05
 attendees:
 - Sebastian Mangelsen
-- Max Musterman
-- Fridrun Gundel
+- Maria Hagmann
+- Cristina Gingsjö
+- Tobias Wilhelm (_via skype_)
+- Kajsa Torring
 absentees:
-- Dieter Dietrichsen
-- Helga Hanemann
+- Alexander Grove
 actions:
 - __Ansvarig__, beskriv det som ska göras
 decisions:
