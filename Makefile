@@ -1,6 +1,8 @@
 
 FILES_SOURCE_MD := $(shell ls -1 *.md)
-FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
+ifeq ($(MAKECMDGOALS),book)
+	FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
+endif
 HTML_VOLVO_FILES = html/note.footer.html html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
@@ -67,8 +69,8 @@ book.pdf: $(FILES_BOOK_MD)
 	@echo " [   EPUB ] $< ==> $@"
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $< -o $@   
 
-%.pdf: %.md
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $< -o $@
+%.pdf: %.md pdf/$(THEME).template.tex
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
 	@echo " [    PDF ] $< ==> $@"
 
 .PHONY: clean
