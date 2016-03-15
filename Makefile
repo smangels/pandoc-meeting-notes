@@ -1,8 +1,10 @@
 
 FILES_SOURCE_MD := $(shell ls -1 *.md)
+
 ifeq ($(MAKECMDGOALS),book)
 	FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
 endif
+
 HTML_VOLVO_FILES = html/note.footer.html html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
