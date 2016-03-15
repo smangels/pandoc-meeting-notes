@@ -53,27 +53,27 @@ epub: $(EPUB_TARGET)
 
 pdf: $(PDF_TARGET)
 
-book: Makefile book.pdf
+book: book.pdf
 
-book.pdf: $(FILES_BOOK_MD)
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_BOOK) $(filter %.md,$^) -o $@
-	@echo " [   BOOK ] $< ==> $@"
+book.pdf: $(FILES_BOOK_MD) Makefile
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_BOOK) $(filter %.md,$(FILES_BOOK_MD)) -o $@
+	@echo " [   BOOK ] $(filter %.md,$^) ==> $@"
 
-%.self_contained.html: %.md
-	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $< -o $@
-	@echo " [   HTML ] $< ==> $@"
+%.self_contained.html: %.md Makefile
+	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
+	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
-%.html: %.md
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $< -o $@
-	@echo " [   HTML ] $< ==> $@"
+%.html: %.md Makefile
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
+	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
-%.epub: %.md
-	@echo " [   EPUB ] $< ==> $@"
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $< -o $@   
+%.epub: %.md Makefile
+	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@   
+	@echo " [   EPUB ] $(filter %.md,$^) ==> $@"
 
-%.pdf: %.md pdf/$(THEME).template.tex
+%.pdf: %.md Makefile
 	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
-	@echo " [    PDF ] $< ==> $@"
+	@echo " [    PDF ] $(filter %.md,$^) ==> $@"
 
 .PHONY: clean
 clean:
