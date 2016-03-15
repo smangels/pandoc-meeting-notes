@@ -381,7 +381,7 @@ $body$
 %
 \begin{minipage}{\textwidth}
 \SignatureAndDate{$author$}{sekreterare}
-\SignatureAndDate{$reviewer$}{justerare}
+$for(reviewer)${\SignatureAndDate{$reviewer$}{justerare}}$endfor$
 \end{minipage}
 
 $if(natbib)$
