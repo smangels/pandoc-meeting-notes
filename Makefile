@@ -1,11 +1,12 @@
 
 FILES_SOURCE_MD := $(shell ls -1 *.md)
+PLUGIN_DIR ?= .
 
 ifeq ($(MAKECMDGOALS),book)
 	FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
 endif
 
-HTML_VOLVO_FILES = html/note.footer.html html/note.css
+HTML_VOLVO_FILES = $(PLUGIN_DIR)/html/note.footer.html $(PLUGIN_DIR)/html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
 PDF_TARGET := $(patsubst %.md,%.pdf,$(FILES_SOURCE_MD))
@@ -16,9 +17,9 @@ PDF_FONT_SIZE := -V fontsize=12pt
 #
 # will be evaluated once the command is applied
 #
-OPT_PANDOC_HTML = --listings -t html --template html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
-OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template pdf/book.template.latex -s -S --toc --toc-depth 3 -N --highlight-style=kate
+OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
+OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/book.template.latex -s -S --toc --toc-depth 3 -N --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
 
 FOLDER_OUT := out/
