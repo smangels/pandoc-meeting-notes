@@ -1,5 +1,5 @@
 
-FILES_SOURCE_MD := $(shell ls -1 *.md)
+FILES_SOURCE_MD := $(shell ls -1 *.md | grep -v README.md)
 PLUGIN_DIR ?= .
 
 ifeq ($(MAKECMDGOALS),book)
