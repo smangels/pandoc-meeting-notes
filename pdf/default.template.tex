@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$twoside,$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -179,6 +179,12 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+\pagestyle{fancy}
+
 $if(subparagraph)$
 $else$
 % Redefines (sub)paragraphs to behave more like sections
@@ -191,6 +197,15 @@ $else$
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 $endif$
+
+% Header Definitions
+\lhead{$title$}
+\rhead{\leftmark}
+
+% Footer Definitions
+\lfoot{Version: $version$}
+\cfoot{$company$}
+\rfoot{\thepage/\pageref{LastPage}}
 
 \begin{document}
 $if(title)$
