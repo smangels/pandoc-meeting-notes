@@ -16,7 +16,7 @@ $endif$
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \newcommand{\columnKeyWidth}{4cm}
-\newcommand{\columnValueWidth}{8cm}
+\newcommand{\columnValueWidth}{12cm}
 
 %
 % force to place some empty lines
@@ -322,7 +322,7 @@ $endif$
 %
 $if(actions)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Att göra:} & $for(actions)$$actions$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Att göra:} & \begin{itemize} $for(actions)$\item$actions$$endfor$\end{itemize}\\
 \end{tabular}
 $else$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
@@ -336,7 +336,7 @@ $endif$
 %
 $if(decisions)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Beslut:} & $for(decisions)$$decisions$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Beslut:} & \begin{itemize} $for(decisions)$\item$decisions$$endfor$\end{itemize}\\
 \end{tabular}
 $else$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
