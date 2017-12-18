@@ -17,9 +17,9 @@ PDF_FONT_SIZE := -V fontsize=12pt
 #
 # will be evaluated once the command is applied
 #
-OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s -S --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s -S --toc --toc-depth 3 -N --listings --highlight-style=kate
-OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/book.template.latex -s -S --toc --toc-depth 3 -N --highlight-style=kate
+OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
+OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/book.template.latex -s --toc --toc-depth 3 -N --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
 
 FOLDER_OUT := out/
@@ -57,23 +57,23 @@ pdf: $(PDF_TARGET)
 book: book.pdf
 
 book.pdf: $(FILES_BOOK_MD) Makefile
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_BOOK) $(filter %.md,$(FILES_BOOK_MD)) -o $@
+	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_BOOK) $(filter %.md,$(FILES_BOOK_MD)) -o $@
 	@echo " [   BOOK ] $(filter %.md,$^) ==> $@"
 
 %.self_contained.html: %.md Makefile
-	@$(EXEC_PANDOC) --self-contained -f markdown $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) --self-contained -f markdown+smart $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
 	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
 %.html: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
 	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
 %.epub: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@   
+	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@   
 	@echo " [   EPUB ] $(filter %.md,$^) ==> $@"
 
 %.pdf: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
 	@echo " [    PDF ] $(filter %.md,$^) ==> $@"
 
 .PHONY: clean
