@@ -93,4 +93,5 @@ clean:
 	rm -f *.epub
 	rm -f *.tar.gz
 	rm -f *.tex
+	rm -f *.aux *.log *.out
 	
