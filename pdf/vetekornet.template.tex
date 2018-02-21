@@ -327,7 +327,7 @@ $endif$
 %
 $if(actions)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Att göra:} & \begin{itemize} $for(actions)$\item$actions$$endfor$\end{itemize}\\
+  \textbf{\color{NavyBlue}Att göra:} & \begin{itemize} $for(actions)$\item $actions$$endfor$\end{itemize}\\
 \end{tabular}
 $else$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
@@ -341,7 +341,7 @@ $endif$
 %
 $if(decisions)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Beslut:} & \begin{itemize} $for(decisions)$\item$decisions$$endfor$\end{itemize}\\
+  \textbf{\color{NavyBlue}Beslut:} & \begin{itemize} $for(decisions)$\item $decisions$$endfor$\end{itemize}\\
 \end{tabular}
 $else$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
