@@ -216,9 +216,12 @@ $endif$
 $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
+
 $if(author)$
-\author{Sekreterare: $author$\\\newline Justerare: $for(reviewer)$$reviewer$, $endfor$}
+\author{Sekreterare: $author$\\\newline Justerare: $reviewer$ $if(counter)$\\\newline Rösträknare: $counter$ $endif$}
 $endif$
+
+
 \date{$date$}
 
 \usepackage{lastpage}
@@ -231,7 +234,7 @@ $header-includes$
 $endfor$
 
 % Header Definitions
-\lhead{Styrelsemöte $date$}
+\lhead{$title$ - $date$}
 \rhead{\leftmark}
 
 % Footer Definitions
@@ -387,7 +390,10 @@ $body$
 \begin{minipage}{\textwidth}
 \SignatureAndDate{$author$}{sekreterare}
 $for(reviewer)${\SignatureAndDate{$reviewer$}{justerare}}$endfor$
+$for(chairmen)${\SignatureAndDate{$chairmen$}{ordförande}}$endfor$
 \end{minipage}
+
+
 
 $if(natbib)$
 $if(bibliography)$
