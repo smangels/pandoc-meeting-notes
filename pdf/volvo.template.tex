@@ -185,6 +185,7 @@ $endfor$
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 \pagestyle{fancy}
 
+
 $if(subparagraph)$
 $else$
 % Redefines (sub)paragraphs to behave more like sections
@@ -199,13 +200,19 @@ $else$
 $endif$
 
 % Header Definitions
-\lhead{$title$ - $subtitle$}
-\rhead{$organization$}
+%\lhead{$title$ - $subtitle$}
+%\rhead{$organization$}
+\fancyhf{}
+\fancyhead[LE,RO]{$title$ - $subtitle$}
+\fancyhead[RE,LO]{$organization$}
 
 % Footer Definitions
-\lfoot{Version: $version$}
-\cfoot{$company$, $author$}
-\rfoot{\thepage/\pageref{LastPage}}
+%\lfoot{Version: $version$}
+%\cfoot{$company$, $author$}
+%\rfoot{\thepage/\pageref{LastPage}}
+\fancyfoot[CE,CO]{$organization-short$, $author$}
+\fancyfoot[LO,RE]{version: $version$}
+\fancyfoot[LE,RO]{\thepage/\pageref{LastPage}}
 
 \begin{document}
 $if(title)$
