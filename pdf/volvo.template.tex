@@ -77,6 +77,11 @@ $else$
 $endif$
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+
+$if(newpagebeforesection)$
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+$endif$
 $if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
@@ -210,7 +215,7 @@ $endif$
 %\lfoot{Version: $version$}
 %\cfoot{$company$, $author$}
 %\rfoot{\thepage/\pageref{LastPage}}
-\fancyfoot[CE,CO]{$organization-short$, $author$}
+\fancyfoot[CE,CO]{$department$ - $author$}
 \fancyfoot[LO,RE]{version: $version$}
 \fancyfoot[LE,RO]{\thepage/\pageref{LastPage}}
 
