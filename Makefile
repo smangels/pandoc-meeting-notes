@@ -20,7 +20,7 @@ PDF_FONT_SIZE := -V fontsize=12pt
 # will be evaluated once the command is applied
 #
 OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
-OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s --toc --toc-depth 3 -N --listings --highlight-style=kate --filter pandoc-citeproc
 OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/book.template.latex -s --toc --toc-depth 3 -N --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
 OPT_PANDOC_TEX = -s --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex

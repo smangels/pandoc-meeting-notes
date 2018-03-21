@@ -101,7 +101,7 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage{biblatex}
+\usepackage[isbn=true]{biblatex}
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
@@ -177,7 +177,7 @@ $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
 $if(author)$
-\author{$if(email)$ \href{mailto:$email$?subject=$title$}{$author$}$else$ $author$ $endif$}
+\author{$if(email)$ \href{mailto:$email$?subject=$title$}{$author$$if(department)$, $department$$endif$}$else$ $author$ $endif$}
 $endif$
 \date{$date$}
 $for(header-includes)$
@@ -258,18 +258,19 @@ $if(book-class)$
 \renewcommand\bibname{$biblio-title$}
 $else$
 \renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
+$endif$ % book-class
+$endif$ % biblio-title
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
-$endif$
-$endif$
+$endif$ % bibliography
+$endif$ % natbib
+
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
 $endif$
+
 $for(include-after)$
 $include-after$
-
 $endfor$
+
 \end{document}
