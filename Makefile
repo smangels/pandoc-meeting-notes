@@ -1,6 +1,7 @@
 
 FILES_SOURCE_MD := $(shell ls -1 *.md | grep -v README.md)
 PLUGIN_DIR ?= .
+PANDOC_VERSION_GTEQ_2 := $(shell expr `pandoc --version | grep ^pandoc | cut -f2 -d ' ' | cut -f1 -d.` \>= 2)
 
 ifeq ($(MAKECMDGOALS),book)
 	FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
@@ -15,14 +16,21 @@ EPUB_TARGET := $(patsubst %.md,%.epub,$(FILES_SOURCE_MD))
 
 PDF_MARGINS := -V geometry:"top=2cm, bottom=2.5cm, left=3cm, right=2cm, footskip = 17mm"
 PDF_FONT_SIZE := -V fontsize=12pt
+OPT_DATA_DIR = $(shell realpath $(PLUGIN_DIR))
 
 #
 # will be evaluated once the command is applied
 #
-OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s --toc --toc-depth 3 --section-divs -H html/$(THEME_NAME).css -N -A html/note.footer.html
+ifeq "$(PANDOC_VERSION_GTEQ_2)" "1"
+	OPT_MARKDOWN_STANDARD = markdown+smart
+else
+	OPT_MARKDOWN_STANDARD = markdown -s
+endif
+
+OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s --toc --toc-depth 3 --section-divs -H $(PLUGIN_DIR)/html/$(THEME_NAME).css -N -A $(PLUGIN_DIR)/html/note.footer.html
 OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s --toc --toc-depth 3 -N --listings --highlight-style=kate --filter pandoc-citeproc
 OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/book.template.latex -s --toc --toc-depth 3 -N --highlight-style=kate
-OPT_PANDOC_EPUB = -t epub --epub-cover-image=img/cover.png
+OPT_PANDOC_EPUB = -t epub --epub-cover-image=$(PLUGIN_DIR)/img/cover.png
 OPT_PANDOC_TEX = -s --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex
 
 FOLDER_OUT := out/
@@ -61,27 +69,27 @@ tex: $(TEX_TARGET)
 book: book.pdf
 
 book.pdf: $(FILES_BOOK_MD) Makefile
-	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_BOOK) $(filter %.md,$(FILES_BOOK_MD)) -o $@
+	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_BOOK) $(filter %.md,$(FILES_BOOK_MD)) -o $@
 	@echo " [   BOOK ] $(filter %.md,$^) ==> $@"
 
 %.self_contained.html: %.md Makefile
-	@$(EXEC_PANDOC) --self-contained -f markdown+smart $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) --self-contained -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
 	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
 %.html: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
 	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
 %.epub: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@   
+	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@   
 	@echo " [   EPUB ] $(filter %.md,$^) ==> $@"
 
 %.pdf: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
 	@echo " [    PDF ] $(filter %.md,$^) ==> $@"
 
 %.tex: %.md Makefile
-	@$(EXEC_PANDOC) -f markdown+smart $(OPT_PANDOC_TEX) $(filter %.md,$^) -o $@
+	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_TEX) $(filter %.md,$^) -o $@
 	@echo " [    TEX ] $(filter %.md,$^) ==> $@"
 
 .PHONY: clean
