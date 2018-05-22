@@ -55,11 +55,11 @@ deploy: meeting.deploy.tar.gz
 meeting.deploy.tar.gz: pdf html-deployable epub
 	@tar -czf $@ $(FILES)
 	@echo " [ TAR.GZ ] ==> $@"
-	
+
 html-deployable: $(HTML_SELF_CONTAINED)
 
 html: $(HTML_TARGET)
-	
+
 epub: $(EPUB_TARGET)
 
 pdf: $(PDF_TARGET)
