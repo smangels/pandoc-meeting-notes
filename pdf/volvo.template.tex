@@ -52,11 +52,7 @@ $endif$
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
-<<<<<<< HEAD
 \usepackage[colorlinks = true, urlcolor = blue, linkcolor = blue]{hyperref}
-=======
-\usepackage{hyperref}
->>>>>>> adding new Volvo templare, fix smart tags for Ubuntu 16.04
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \hypersetup{unicode=true,
 $if(title-meta)$
@@ -81,14 +77,12 @@ $else$
 $endif$
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-<<<<<<< HEAD
 
 $if(newpagebeforesection)$
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
 $endif$
-=======
->>>>>>> adding new Volvo templare, fix smart tags for Ubuntu 16.04
+
 $if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
@@ -108,11 +102,9 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-<<<<<<< HEAD
+
 \usepackage[isbn=true]{biblatex}
-=======
-\usepackage{biblatex}
->>>>>>> adding new Volvo templare, fix smart tags for Ubuntu 16.04
+
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
