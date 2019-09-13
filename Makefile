@@ -1,5 +1,14 @@
 
+
+ifneq ($(THEME),)
+	THEME_NAME := $(THEME)
+else
+	THEME_NAME := default
+endif
+
 FILES_SOURCE_MD := $(shell ls -1 *.md | grep -v README.md)
+FILES_TEMPLATES_PDF := $(shell ls -1 $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex)
+FILES_TEMPLATES_HTML := $(shell ls -1 $(PLUGIN_DIR)/html/$(THEME_NAME).template.tex)
 PLUGIN_DIR ?= .
 PANDOC_VERSION_GTEQ_2 := $(shell expr `pandoc --version | grep ^pandoc | cut -f2 -d ' ' | cut -f1 -d.` \>= 2)
 
@@ -38,13 +47,6 @@ FILES += $(PDF_TARGET) $(EPUB_TARGET) $(HTML_SELF_CONTAINED)
 EXEC_PANDOC := $(shell which pandoc)
 
 
-ifneq ($(THEME),)
-	THEME_NAME := $(THEME)
-else
-	THEME_NAME := default
-endif
-
-
 ifeq ($(EXEC_PANDOC),)
     $(error "missing Pandoc executable, Stop.")
 endif
@@ -76,7 +78,7 @@ book.pdf: $(FILES_BOOK_MD) Makefile
 	@$(EXEC_PANDOC) --self-contained -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
 	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
-%.html: %.md Makefile
+%.html: %.md Makefile $(FILES_TEMPLATES_HTML)
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_HTML) $(filter %.md,$^) -o $@
 	@echo " [   HTML ] $(filter %.md,$^) ==> $@"
 
@@ -84,7 +86,7 @@ book.pdf: $(FILES_BOOK_MD) Makefile
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@
 	@echo " [   EPUB ] $(filter %.md,$^) ==> $@"
 
-%.pdf: %.md Makefile
+%.pdf: %.md Makefile $(FILES_TEMPLATES_PDF)
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
 	@echo " [    PDF ] $(filter %.md,$^) ==> $@"
 
