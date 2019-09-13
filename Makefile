@@ -8,7 +8,7 @@ endif
 
 FILES_SOURCE_MD := $(shell ls -1 *.md | grep -v README.md)
 FILES_TEMPLATES_PDF := $(shell ls -1 $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex)
-FILES_TEMPLATES_HTML := $(shell ls -1 $(PLUGIN_DIR)/html/$(THEME_NAME).template.tex)
+FILES_TEMPLATES_HTML := $(shell ls -1 $(PLUGIN_DIR)/html/$(THEME_NAME).template.html)
 PLUGIN_DIR ?= .
 PANDOC_VERSION_GTEQ_2 := $(shell expr `pandoc --version | grep ^pandoc | cut -f2 -d ' ' | cut -f1 -d.` \>= 2)
 
