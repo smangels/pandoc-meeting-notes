@@ -2,7 +2,8 @@
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
-\usepackage{lmodern}
+\usepackage{palatino}
+
 $endif$
 $if(linestretch)$
 \usepackage{setspace}
@@ -147,7 +148,7 @@ $if(strikeout)$
 $endif$
 $if(indent)$
 $else$
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{10pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 $endif$
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
@@ -182,9 +183,9 @@ $endif$
 % define the spacing before and after a SECTION
 \titlespacing*{\section}{0pt}{2.5ex}{1ex}
 % define the spacing before and after a SUBSECTION
-\titlespacing*{\subsection}{5pt}{2.5ex}{1ex}
+\titlespacing*{\subsection}{0pt}{2.5ex}{1ex}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\titlelabel{§\thetitle.\quad}
+\titlelabel{\thetitle.\quad}
 \titleformat*{\section}{\color{NavyBlue}\large\bfseries}
 \titleformat*{\subsection}{\bfseries}
 %\titleformat*{\subsubsection}{\large\bfseries}
