@@ -16,8 +16,8 @@ ifeq ($(MAKECMDGOALS),book)
 	FILES_BOOK_MD = $(shell ls -1 book_*.md | sort)
 endif
 
-GIT_REV_SHORT := $(shell git -C $(PLUGIN_DIR) rev-parse --short HEAD)
-GIT_REV := $(shell git -C $(PLUGIN_DIR) rev-parse HEAD)
+PANDOC_REV_SHORT := $(shell git -C $(PLUGIN_DIR) rev-parse --short HEAD)
+
 HTML_VOLVO_FILES = $(PLUGIN_DIR)/html/note.footer.html $(PLUGIN_DIR)/html/note.css
 HTML_TARGET := $(patsubst %.md,%.html,$(FILES_SOURCE_MD))
 HTML_SELF_CONTAINED := $(patsubst %.md,%.self_contained.html,$(FILES_SOURCE_MD))
@@ -39,7 +39,7 @@ else
 endif
 
 OPT_PANDOC_HTML = --listings -t html --template $(PLUGIN_DIR)/html/$(THEME_NAME).template.html -s --toc --toc-depth 3 --section-divs -H $(PLUGIN_DIR)/html/$(THEME_NAME).css -N -A $(PLUGIN_DIR)/html/note.footer.html
-OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --metadata=GIT_REV:$(GIT_REV) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s --toc --toc-depth 3 -N --listings --highlight-style=kate
+OPT_PANDOC_PDF = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --metadata=PANDOC_REV_SHORT:$(PANDOC_REV_SHORT) --metadata=GIT_REV_SHORT:$(GIT_REV_SHORT) --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex -s --toc --toc-depth 3 -N --listings --highlight-style=kate
 OPT_PANDOC_BOOK = --listings -t latex $(PDF_MARGINS) $(PDF_FONT_SIZE) --template $(PLUGIN_DIR)/pdf/book.template.latex -s --toc --toc-depth 3 -N --highlight-style=kate
 OPT_PANDOC_EPUB = -t epub --epub-cover-image=$(PLUGIN_DIR)/img/cover.png
 OPT_PANDOC_TEX = -s --template $(PLUGIN_DIR)/pdf/$(THEME_NAME).template.tex
@@ -89,6 +89,7 @@ book.pdf: $(FILES_BOOK_MD) Makefile
 	@echo " [   EPUB ] $(filter %.md,$^) ==> $@"
 
 %.pdf: %.md Makefile $(FILES_TEMPLATES_PDF)
+	$(eval GIT_REV_SHORT := $(shell git log -n 1 --pretty=format:%h $(filter %.md,$^)))
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
 	@echo " [    PDF ] $(filter %.md,$^) ==> $@"
 

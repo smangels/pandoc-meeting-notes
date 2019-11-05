@@ -270,8 +270,11 @@ $endif$
 \clearpage
 $body$
 
-\section{Generator Information}
-Generated with \href{https://github.com/smangels/pandoc-meeting-notes/commit/$GIT_REV$}{pandoc-meetings-notes}:$GIT_REV_SHORT$
+$if(show_doc_rev)$
+\section{Document Generator Information}
+Generated with \href{https://github.com/smangels/pandoc-meeting-notes}{pandoc-meetings-notes} $if(PANDOC_REV_SHORT)$($PANDOC_REV_SHORT$)$endif$
+$if(GIT_REV_SHORT)$\\ Document is based on ref: $GIT_REV_SHORT$$endif$
+$endif$
 
 $if(natbib)$
 $if(bibliography)$
