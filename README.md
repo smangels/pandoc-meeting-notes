@@ -1,7 +1,7 @@
 ---
 title: Project Readme
 subtitle: Pandoc Meeting Notes Project
-author: 
+author:
 - Sebastian K. Mangelsen
 - Max Mustermann
 attendee:
@@ -33,6 +33,28 @@ This repository contains a simple template for meeting notes handled by PANDOC.
 * Pandoc (version 1.15.2)
 * latex (TeX  Live 2015)
 
+# New Project
+
+In order to start writing a new project one has to run the following commands.
+
+~~~~{.bash}
+git init ./
+git submodule add git@github.com:smangels/pandoc-meeting-notes.git
+~~~~
+
+Create a Makefile with the following content.
+
+~~~~{.bash}
+
+PLUGIN_DIR = ./pandoc-meeting-notes
+
+ifeq ($(THEME),)
+    include theme-pandoc.cfg
+endif
+
+include $(PLUGIN_DIR)/Makefile
+~~~~
+
 # Command Line Examples
 
 ## Generate an _ePub_ Document
@@ -40,7 +62,7 @@ This repository contains a simple template for meeting notes handled by PANDOC.
 ### Provide a Title Page
 Within an epub the title page can be set. In order to do so, place a file called `cover.jpg` or `cover.png` in the folder img. The script will pick them up when building an epub document.
 
-Usually the format should be 150dpi and the longest side should not increase 
+Usually the format should be 150dpi and the longest side should not increase
 1000px.
 
 ~~~~{.bash}
