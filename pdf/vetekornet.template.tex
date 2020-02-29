@@ -272,58 +272,21 @@ $abstract$
 $endif$
 
 
-\vspace{2em}
 %
 %	List the start and the stop time
 %
-$if(started)$
+
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
   \textbf{\color{NavyBlue}Mötet öppnades:} & \texttt{$started$}\\
-\end{tabular}
-$endif$
-
-$if(finished)$
-\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
   \textbf{\color{NavyBlue}Mötet avslutades:} & \texttt{$finished$}\\
-\end{tabular}
-
-$if(organisation)$
-\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
   \textbf{\color{NavyBlue}Bolag:} & \texttt{$organisation$}\\
-\end{tabular}
-$endif$
-
-$if(place)$
-\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }%
   \textbf{\color{NavyBlue}Plats:} & \texttt{$place$}\\%
-\end{tabular}%
-$endif$
-
-$if(orgNr)$
-\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Organisationsnr:} & \texttt{$orgNr$}\\
-\end{tabular}
-$endif$
-
-$endif$
-
-%
-% print a list of attendees, table is used to keep the cells aligned
-%
-$if(attendees)$
-\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
+  \textbf{\color{NavyBlue}Organisationsnr:} & \texttt{$orgNr$} \newline \\
   \textbf{\color{NavyBlue}Närvarande:} & $for(attendees)$\texttt{$attendees$} \newline $endfor$\\
+  $if(absentees)$
+    \textbf{\color{NavyBlue}Frånvarande:} & $for(absentees)$\texttt{$absentees$} \newline $endfor$\\
+  $endif$
 \end{tabular}
-$endif$
-
-%
-% print a list of absentees
-%
-$if(absentees)$
-\begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Frånvarande:} & $for(absentees)$\texttt{$absentees$} \newline $endfor$\\
-\end{tabular}
-$endif$
 
 
 %
