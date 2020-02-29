@@ -6,6 +6,7 @@ $else$
 $endif$
 $if(linestretch)$
 \usepackage{setspace}
+\usepackage{inconsolata}
 \setstretch{$linestretch$}
 $endif$
 \usepackage{amssymb,amsmath}
@@ -277,30 +278,30 @@ $endif$
 %
 $if(started)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Mötet öppnades:} & $started$\\
+  \textbf{\color{NavyBlue}Mötet öppnades:} & \texttt{$started$}\\
 \end{tabular}
 $endif$
 
 $if(finished)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Mötet avslutades:} & $finished$\\
+  \textbf{\color{NavyBlue}Mötet avslutades:} & \texttt{$finished$}\\
 \end{tabular}
 
 $if(organisation)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Bolag:} & $organisation$\\
+  \textbf{\color{NavyBlue}Bolag:} & \texttt{$organisation$}\\
 \end{tabular}
 $endif$
 
 $if(place)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }%
-  \textbf{\color{NavyBlue}Plats:} & $place$\\%
+  \textbf{\color{NavyBlue}Plats:} & \texttt{$place$}\\%
 \end{tabular}%
 $endif$
 
 $if(orgNr)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Organisationsnr:} & $orgNr$\\
+  \textbf{\color{NavyBlue}Organisationsnr:} & \texttt{$orgNr$}\\
 \end{tabular}
 $endif$
 
@@ -311,7 +312,7 @@ $endif$
 %
 $if(attendees)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Närvarande:} & $for(attendees)$$attendees$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Närvarande:} & $for(attendees)$\texttt{$attendees$} \newline $endfor$\\
 \end{tabular}
 $endif$
 
@@ -320,7 +321,7 @@ $endif$
 %
 $if(absentees)$
 \begin{tabular}{ L{\columnKeyWidth} L{\columnValueWidth} }
-  \textbf{\color{NavyBlue}Frånvarande:} & $for(absentees)$$absentees$ \newline $endfor$\\
+  \textbf{\color{NavyBlue}Frånvarande:} & $for(absentees)$\texttt{$absentees$} \newline $endfor$\\
 \end{tabular}
 $endif$
 
