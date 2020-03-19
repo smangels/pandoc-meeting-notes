@@ -3,3 +3,5 @@ texlive-core
 texlive-latexextra
 pandoc-crossref
 pandoc-citeproc
+make
+evince
