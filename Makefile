@@ -72,7 +72,7 @@ tex: $(TEX_TARGET)
 
 book: book.pdf
 
-book.pdf: $(FILES_BOOK_MD) Makefile
+book.pdf: $(FILES_BOOK_MD) Makefile pandoc-meeting-notes/Makefile
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_BOOK) $(filter %.md,$(FILES_BOOK_MD)) -o $@
 	@echo " [   BOOK ] $(filter %.md,$^) ==> $@"
 
@@ -88,7 +88,7 @@ book.pdf: $(FILES_BOOK_MD) Makefile
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_EPUB) $(filter %.md,$^) -o $@
 	@echo " [   EPUB ] $(filter %.md,$^) ==> $@"
 
-%.pdf: %.md Makefile $(FILES_TEMPLATES_PDF)
+%.pdf: %.md Makefile $(FILES_TEMPLATES_PDF) Makefile pandoc-meeting-notes/Makefile
 	$(eval GIT_REV_SHORT := $(shell git log -n 1 --pretty=format:%h $(filter %.md,$^)))
 	@$(EXEC_PANDOC) -f $(OPT_MARKDOWN_STANDARD) $(OPT_PANDOC_PDF) $(filter %.md,$^) -o $@
 	@echo " [    PDF ] $(filter %.md,$^) ==> $@"
