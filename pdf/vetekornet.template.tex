@@ -219,7 +219,15 @@ $if(title)$
 $endif$
 
 $if(author)$
-\author{Sekreterare: $author$\\\newline Justerare: $reviewer$ $if(counter)$\\\newline Rösträknare: $counter$ $endif$}
+\author{
+  Sekreterare: $author$\\\newline
+  $if(chairmen)$
+  Ordförande: $chairmen$\\\newline
+  $endif$
+  Justerare: $reviewer$
+  $if(counter)$\\\newline Rösträknare: $counter$
+  $endif$
+}
 $endif$
 
 
